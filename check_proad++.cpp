@@ -44,7 +44,7 @@ int main(int argc, char* argv[]){
 		curl_global_init(CURL_GLOBAL_ALL);
 		curl = curl_easy_init();
 
-		curl_easy_setopt(curl, CURLOPT_URL, "https://proad.trtsp.jus.br/proad/trt12/monitor");
+		curl_easy_setopt(curl, CURLOPT_URL, "https://url/monitor");
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, &writeCallback);
 		curl_easy_perform(curl);
 
