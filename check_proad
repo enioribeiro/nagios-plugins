@@ -1,6 +1,13 @@
 #!/usr/bin/php -q
 <?php
-$url = "https://proad.trtsp.jus.br/proad/trt12/monitor";
+/*
+ *
+ * autor: Enio Ribeiro <eniobribeiro@gmail.com>
+ * date: 07/2017
+ *
+ *
+ */
+$url = "https://url/monitor";
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
