@@ -7,6 +7,7 @@
  *
  *
  */
+
 $url = "https://url/monitor";
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -24,35 +25,25 @@ if($argc == 1){
 
 	if(isset($data->status) && $data->status == 'ATIVO'){
 	 	//$result = 0;
-     	echo  "OK - ". utf8_decode("Serviço ") . (isset($data->status) ? $data->status : "ATIVO") . utf8_decode(" [versão: ") . $data->versao . "]";
+     		echo  "OK - ". utf8_decode("Serviço ") . (isset($data->status) ? $data->status : "ATIVO") . utf8_decode(" [versão: ") . $data->versao . "]";
 		exit(0);
 	}else{
 		echo "CRITICAL - " . utf8_decode("Serviço ") . (isset($data->status) ? $data->status : "com problemas") ;
 		exit(2);
 	}
 
-
 }else{
-
-	  for($i = 0; $i < sizeof($data->recursos); $i++){
-
-      	if($data->recursos[$i]->nome == $argv[1]){
-        	
-			if($data->recursos[$i]->status == 'ATIVO'){
+	for($i = 0; $i < sizeof($data->recursos); $i++){
+      		if($data->recursos[$i]->nome == $argv[1]){
+        		if($data->recursos[$i]->status == 'ATIVO'){
 				echo  "OK - " . utf8_decode("Serviço "). (isset($data->recursos[$i]->status) ? $data->recursos[$i]->status : "ATIVO")  .utf8_decode(" [latência: ") . $data->recursos[$i]->latencia . "]";
-        		exit(0);
+        			exit(0);
 			}else{
-        		echo utf8_decode("CRITICAL - Serviço com problemas");
-        		exit(2);
-    		}
-
-			
-		}
-	
-
-	}                                 
-
-	
+        			echo utf8_decode("CRITICAL - Serviço com problemas");
+        			exit(2);
+    			}			
+		}	
+	}                                 	
 }
 
 echo utf8_decode("CRITICAL - Serviço com problemas");
